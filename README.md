@@ -102,8 +102,8 @@ First commit:
 git commit -m "Initial commit"
 
 If Git asks for identity:
-git config --global user.name "Your Name"
-git config --global user.email "[your-email@example.com](mailto:your-email@example.com)"
+git config --global user.name "ShubhPandya"
+git config --global user.name "Email-id"
 
 ---
 
@@ -142,7 +142,7 @@ git push
 
 ---
 
-11. PROJECT STRUCTURE (IMPORTANT FILES)
+11. PROJECT STRUCTURE
 
 ---
 
@@ -164,5 +164,3 @@ cron/ → scheduled jobs
 * Never upload .env file to GitHub
 * Use docker compose down before shutting system
 * Use docker compose up when starting work again
-
-END OF DOCUMENT
