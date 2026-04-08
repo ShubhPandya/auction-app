@@ -1,45 +1,69 @@
-const express = require("express");
-const pool = require("./config/db");
-const fetchMatches = require("./services/fetchMatches");
-const fetchSeries = require("./services/fetchSeries");
-const fetchTeamsByLeague = require("./services/fetchTeamsByLeague");
-const testApi = require("./services/testCricbuzz");
+require("dotenv").config();
+const api = require("./cricbuzzApi");   // ✅ use your unified API
+const pool = require("../config/db");
 
-require("./cron/cronJobs");
-
-const app = express();
-
-app.get("/", async (req, res) => {
+async function fetchMatches() {
   try {
-    const result = await pool.query("SELECT NOW()");
-    res.send(result.rows);
+    // 🔥 Call Cricbuzz API (RapidAPI)
+    const response = await api.get("/matches/list");
+
+    const typeMatches = response.data?.typeMatches || [];
+
+    for (const type of typeMatches) {
+      for (const series of type.seriesMatches || []) {
+        const seriesData = series.seriesAdWrapper;
+
+        if (!seriesData) continue;
+
+        const seriesId = seriesData.seriesId;
+        const seriesName = seriesData.seriesName;
+
+        // ✅ Insert league (series)
+        await pool.query(
+          "INSERT INTO leagues(id, name) VALUES($1, $2) ON CONFLICT (id) DO NOTHING",
+          [seriesId, seriesName]
+        );
+
+        for (const matchWrapper of seriesData.matches || []) {
+          const match = matchWrapper.matchInfo;
+
+          if (!match) continue;
+
+          const matchId = match.matchId;
+          const team1 = match.team1?.teamName || "Team1";
+          const team2 = match.team2?.teamName || "Team2";
+          const status = match.status || "Unknown";
+
+          // ✅ Insert teams
+          await pool.query(
+            "INSERT INTO teams(id, name) VALUES($1, $2) ON CONFLICT (id) DO NOTHING",
+            [team1, team1]
+          );
+
+          await pool.query(
+            "INSERT INTO teams(id, name) VALUES($1, $2) ON CONFLICT (id) DO NOTHING",
+            [team2, team2]
+          );
+
+          // ✅ Insert match
+          await pool.query(
+            "INSERT INTO matches(id, team1_id, team2_id, match_date, status) VALUES($1,$2,$3,$4,$5) ON CONFLICT (id) DO NOTHING",
+            [
+              matchId,
+              team1,
+              team2,
+              new Date(match.startDate),
+              status
+            ]
+          );
+        }
+      }
+    }
+
+    console.log("✅ Matches, series, teams inserted into database");
   } catch (err) {
-    console.error(err);
-    res.send("Database error");
+    console.error("❌ Error fetching matches:", err.response?.data || err.message);
   }
-});
+}
 
-app.get("/fetch-matches", async (req, res) => {
-  await fetchMatches();
-  res.send("Matches fetched and stored");
-});
-
-app.get("/fetch-series", async (req, res) => {
-  await fetchSeries();
-  res.send("Series fetched and stored");
-});
-
-app.listen(3000, () => {
-  console.log("Server running on port 3000");
-});
-
-app.get("/fetch-teams/:seriesId", async (req, res) => {
-  const seriesId = req.params.seriesId;
-  await fetchTeamsByLeague(seriesId);
-  res.send("Teams fetched for league");
-});
-
-app.get("/test-api", async (req, res) => {
-  await testApi();
-  res.send("API Tested");
-});
+module.exports = fetchMatches;
