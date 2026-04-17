@@ -1,0 +1,104 @@
+AUCTION APP — COMMANDS EXPLAINED
+
+---
+
+## DOCKER COMMANDS
+
+docker compose up --build
+→ Builds images and starts containers
+
+docker compose down
+→ Stops and removes containers
+
+docker compose down -v
+→ Stops containers and deletes database data (volume reset)
+
+docker compose restart
+→ Restarts running containers
+
+docker exec -it auction_postgres psql -U postgres -d auction_db
+→ Opens PostgreSQL terminal inside Docker container
+
+---
+
+## POSTGRES COMMANDS
+
+\dt
+→ Shows all tables in database
+
+SELECT * FROM table_name;
+→ Fetches all data from a table
+
+\q
+→ Exit PostgreSQL terminal
+
+---
+
+## GIT COMMANDS
+
+git --version
+→ Checks if Git is installed
+
+git init
+→ Initializes a Git repository in project
+
+git add .
+→ Adds all files to staging area
+
+git status
+→ Shows current state of files
+
+git commit -m "message"
+→ Saves snapshot of code
+
+git config --global user.name "Name"
+→ Sets Git username
+
+git config --global user.email "email"
+→ Sets Git email
+
+git remote add origin <repo-url>
+→ Connects local project to GitHub repo
+
+git branch -M main
+→ Sets main branch
+
+git push -u origin main
+→ Uploads code to GitHub
+
+git push
+→ Pushes latest changes
+
+---
+
+## GENERAL FLOW (IMPORTANT)
+
+Start working:
+docker compose up
+
+Make changes
+
+Save changes:
+git add .
+git commit -m "message"
+git push
+
+Stop working:
+docker compose down
+
+---
+
+## COMMON ERRORS
+
+"git not recognized"
+→ Restart VS Code or system
+
+"docker daemon not running"
+→ Start Docker Desktop
+
+"volume is in use"
+→ Run docker compose down -v
+
+---
+
+END OF COMMAND GUIDE
