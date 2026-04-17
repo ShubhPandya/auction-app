@@ -1,0 +1,441 @@
+/**
+ * Team Management Page Styles
+ */
+
+.team-container {
+  padding: 2rem;
+}
+
+.team-header {
+  background-color: white;
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow);
+}
+
+.team-header h1 {
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.team-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.stat-box {
+  background-color: var(--light-color);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--primary-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-box label {
+  font-size: 0.85rem;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.stat-box strong {
+  font-size: 1.75rem;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+#addPlayerBtn {
+  background-color: var(--success-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+#addPlayerBtn:hover {
+  background-color: #218838;
+}
+
+.players-section {
+  background-color: white;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 2rem;
+}
+
+.players-section h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.players-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.player-card {
+  background-color: var(--light-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s;
+}
+
+.player-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.player-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.player-header h4 {
+  margin: 0;
+  color: #333;
+  flex: 1;
+}
+
+.player-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info-row label {
+  font-weight: 600;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.info-row span {
+  color: #333;
+}
+
+.info-row strong {
+  color: var(--success-color);
+  font-size: 1.1rem;
+}
+
+/* Add Player Modal */
+.players-search-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.player-quick-select {
+  padding: 0.75rem;
+  background-color: var(--light-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.3s;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.player-quick-select:hover {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.back-link {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.back-link a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.back-link a:hover {
+  color: #1565c0;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .players-list {
+    grid-template-columns: 1fr;
+  }
+
+  .team-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Team Tabs */
+.team-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--border-color);
+  background-color: white;
+  border-radius: 8px 8px 0 0;
+  padding: 0 2rem;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+}
+
+.tab-btn:hover {
+  color: var(--primary-color);
+}
+
+.tab-btn.active {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+}
+
+/* Match Breakdown Table */
+.breakdown-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.breakdown-table thead {
+  background-color: var(--light-color);
+}
+
+.breakdown-table th {
+  padding: 0.75rem;
+  text-align: right;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.breakdown-table th:first-child {
+  text-align: left;
+}
+
+.breakdown-table td {
+  padding: 0.75rem;
+  text-align: right;
+  border-bottom: 1px solid var(--border-color);
+  color: #333;
+}
+
+.breakdown-table td:first-child {
+  text-align: left;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.breakdown-table td.match-name {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.breakdown-table td.points-cell {
+  color: #666;
+}
+
+.breakdown-table td.points-cell.has-points {
+  color: var(--success-color);
+  font-weight: 600;
+}
+
+.breakdown-table td.total-cell {
+  background-color: var(--light-color);
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.breakdown-table tbody tr:hover {
+  background-color: var(--light-color);
+}
+
+@media (max-width: 1024px) {
+  .breakdown-table {
+    font-size: 0.85rem;
+  }
+
+  .breakdown-table th,
+  .breakdown-table td {
+    padding: 0.5rem;
+  }
+
+  .team-tabs {
+    padding: 0 1rem;
+  }
+
+  .tab-btn {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Export Modal */
+.export-modal {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.export-summary {
+  background-color: var(--light-color);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid var(--primary-color);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.summary-row:last-child {
+  border-bottom: none;
+}
+
+.summary-row label {
+  font-weight: 600;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.summary-row strong {
+  color: var(--primary-color);
+  font-size: 1.1rem;
+}
+
+.export-table-title {
+  color: #333;
+  margin: 1.5rem 0 1rem;
+  font-size: 1.1rem;
+}
+
+.export-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.export-table thead {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.export-table th {
+  padding: 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  border: 1px solid var(--border-color);
+}
+
+.export-table td {
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+}
+
+.export-table tbody tr:nth-child(even) {
+  background-color: var(--light-color);
+}
+
+.export-table tbody tr:hover {
+  background-color: #f0f4ff;
+}
+
+.modal-footer {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.modal-footer .btn-secondary {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.modal-footer .btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+#exportTeamBtn {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+  margin-left: 0.5rem;
+}
+
+#exportTeamBtn:hover {
+  background-color: #5a6268;
+}
+
+@media print {
+  .modal-header,
+  .modal-footer {
+    display: none;
+  }
+
+  .export-content {
+    page-break-inside: avoid;
+  }
+
+  .export-table {
+    page-break-inside: avoid;
+  }
+
+  .export-table tbody tr {
+    page-break-inside: avoid;
+  }
+}
+

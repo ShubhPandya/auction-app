@@ -1,0 +1,373 @@
+{
+  "info": {
+    "name": "IPL Live Scorecard API",
+    "description": "Postman collection for IPL Live Scorecard API - Cricket scoring and commentary endpoints",
+    "version": "2.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "V1 - Legacy Endpoints",
+      "item": [
+        {
+          "name": "Home",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                ""
+              ]
+            },
+            "description": "Home endpoint - Returns API usage information"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Scorecard by IPL Match Number",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/scorecard?ipl_match_no=1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "scorecard"
+              ],
+              "query": [
+                {
+                  "key": "ipl_match_no",
+                  "value": "1",
+                  "description": "IPL match number (e.g., 1, 2, 3...)"
+                }
+              ]
+            },
+            "description": "Get the entire scorecard for an IPL match by match number"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Scorecard by Match ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/scorecard/:match_id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "scorecard",
+                ":match_id"
+              ],
+              "variable": [
+                {
+                  "key": "match_id",
+                  "value": "1234567",
+                  "description": "Cricbuzz match ID"
+                }
+              ]
+            },
+            "description": "Get the entire scorecard for any match by cricbuzz match ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Get All IPL Matches",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/get_all_matches",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "get_all_matches"
+              ]
+            },
+            "description": "Returns a list of all IPL matches with match details"
+          },
+          "response": []
+        },
+        {
+          "name": "Refresh All IPL Matches",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/get_all_matches_refresh",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "get_all_matches_refresh"
+              ]
+            },
+            "description": "Refreshes the match list from cricbuzz and returns all IPL matches"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "V2 - Scorecard Endpoints",
+      "item": [
+        {
+          "name": "Get Scorecard by Query Parameter",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/v2/scorecard?match_id=1234567",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "v2",
+                "scorecard"
+              ],
+              "query": [
+                {
+                  "key": "match_id",
+                  "value": "1234567",
+                  "description": "Cricbuzz match ID"
+                }
+              ]
+            },
+            "description": "V2: Get the entire scorecard using query parameter (Next.js scraping method)"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Scorecard by Path Parameter",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/v2/scorecard/:match_id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "v2",
+                "scorecard",
+                ":match_id"
+              ],
+              "variable": [
+                {
+                  "key": "match_id",
+                  "value": "1234567",
+                  "description": "Cricbuzz match ID"
+                }
+              ]
+            },
+            "description": "V2: Get the entire scorecard using path parameter (Next.js scraping method)"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "V2 - Commentary Endpoints",
+      "item": [
+        {
+          "name": "Get Recent Commentary",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/v2/commentary/:match_id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "v2",
+                "commentary",
+                ":match_id"
+              ],
+              "variable": [
+                {
+                  "key": "match_id",
+                  "value": "1234567",
+                  "description": "Cricbuzz match ID"
+                }
+              ]
+            },
+            "description": "Get recent ball-by-ball commentary (approximately last 2 overs)"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Full Commentary for Innings",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/v2/full-commentary/:match_id/:innings_id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "v2",
+                "full-commentary",
+                ":match_id",
+                ":innings_id"
+              ],
+              "variable": [
+                {
+                  "key": "match_id",
+                  "value": "1234567",
+                  "description": "Cricbuzz match ID"
+                },
+                {
+                  "key": "innings_id",
+                  "value": "1",
+                  "description": "Innings ID (1, 2, 3, or 4)"
+                }
+              ]
+            },
+            "description": "Get complete ball-by-ball commentary for an entire innings"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Commentary for Specific Over",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/v2/overs/:match_id/:innings_id/:over",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "v2",
+                "overs",
+                ":match_id",
+                ":innings_id",
+                ":over"
+              ],
+              "variable": [
+                {
+                  "key": "match_id",
+                  "value": "1234567",
+                  "description": "Cricbuzz match ID"
+                },
+                {
+                  "key": "innings_id",
+                  "value": "1",
+                  "description": "Innings ID (1, 2, 3, or 4)"
+                },
+                {
+                  "key": "over",
+                  "value": "5",
+                  "description": "Over number (0-indexed: 0 = first over, 19 = 20th over in T20)"
+                }
+              ]
+            },
+            "description": "Get commentary for a specific over (e.g., over 5)"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Commentary for Specific Ball",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/v2/ball/:match_id/:innings_id/:over/:ball",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "v2",
+                "ball",
+                ":match_id",
+                ":innings_id",
+                ":over",
+                ":ball"
+              ],
+              "variable": [
+                {
+                  "key": "match_id",
+                  "value": "1234567",
+                  "description": "Cricbuzz match ID"
+                },
+                {
+                  "key": "innings_id",
+                  "value": "1",
+                  "description": "Innings ID (1, 2, 3, or 4)"
+                },
+                {
+                  "key": "over",
+                  "value": "5",
+                  "description": "Over number (0-indexed)"
+                },
+                {
+                  "key": "ball",
+                  "value": "3",
+                  "description": "Ball number (1-6 for legal deliveries)"
+                }
+              ]
+            },
+            "description": "Get commentary for a specific ball (e.g., over 5, ball 3)"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "V2 - Highlights Endpoints",
+      "item": [
+        {
+          "name": "Get Highlights for Innings",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/v2/highlights/:match_id/:innings_id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "v2",
+                "highlights",
+                ":match_id",
+                ":innings_id"
+              ],
+              "variable": [
+                {
+                  "key": "match_id",
+                  "value": "1234567",
+                  "description": "Cricbuzz match ID"
+                },
+                {
+                  "key": "innings_id",
+                  "value": "1",
+                  "description": "Innings ID (1, 2, 3, or 4)"
+                }
+              ]
+            },
+            "description": "Get only key events (fours, sixes, wickets, milestones) for an innings"
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000",
+      "type": "string",
+      "description": "Base URL for the API (change port if running on different port)"
+    }
+  ]
+}

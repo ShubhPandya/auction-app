@@ -1,0 +1,315 @@
+/**
+ * Room Details Page Styles
+ */
+
+.room-container {
+  padding: 2rem;
+}
+
+.room-header {
+  background-color: white;
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.room-info {
+  flex: 1;
+  min-width: 300px;
+}
+
+.room-info h1 {
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.room-info p {
+  color: #666;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.room-stats {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.room-stats span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #333;
+}
+
+.room-stats strong {
+  font-size: 1.25rem;
+  color: var(--primary-color);
+}
+
+.room-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.room-actions button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+/* Invite code display */
+.invite-code-box {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding: 0.6rem 1rem;
+  background: #f0f9ff;
+  border: 1.5px dashed #3b82f6;
+  border-radius: 8px;
+  width: fit-content;
+}
+
+.invite-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.invite-code-value {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #1d4ed8;
+  font-family: monospace;
+}
+
+.btn-copy {
+  padding: 0.3rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-copy:hover {
+  background: #2563eb;
+}
+
+.room-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+.teams-section h2,
+.participants-section h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.teams-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.team-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.team-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.team-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+}
+
+.team-card-header h4 {
+  margin: 0;
+  color: #333;
+}
+
+.team-card-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.team-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.team-stat label {
+  font-size: 0.75rem;
+  color: #999;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.team-stat strong {
+  font-size: 1.25rem;
+  color: var(--primary-color);
+}
+
+.team-card-btn {
+  background-color: var(--info-color);
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.team-card-btn:hover {
+  background-color: #138496;
+}
+
+.participants-section {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  height: fit-content;
+}
+
+.participants-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.participants-list li {
+  padding: 0.75rem 1rem;
+  background-color: var(--light-color);
+  border-radius: 4px;
+  color: #333;
+}
+
+.participant-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.75rem 1rem;
+  background-color: var(--light-color);
+  border-radius: 4px;
+  color: #333;
+  list-style: none;
+}
+
+.ready-indicator {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.ready-indicator.ready {
+  color: #22c55e;
+}
+
+.ready-indicator.not-ready {
+  color: #9ca3af;
+}
+
+.participant-name {
+  flex: 1;
+  font-weight: 500;
+}
+
+@media (max-width: 968px) {
+  .room-content {
+    grid-template-columns: 1fr;
+  }
+
+  .room-header {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .teams-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Auction Starting Banner */
+.auction-starting-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #1e40af, #2563eb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: slide-in 0.4s ease;
+}
+
+.banner-content {
+  text-align: center;
+  color: white;
+}
+
+.banner-icon {
+  font-size: 64px;
+  margin-bottom: 20px;
+}
+
+.banner-content h2 {
+  font-size: 32px;
+  font-weight: 800;
+  margin: 0 0 10px;
+}
+
+.banner-content p {
+  font-size: 18px;
+  margin: 0;
+  opacity: 0.9;
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,115 @@
+/* Player Pool Page */
+
+.player-pool-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+
+.player-pool-header {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.player-pool-header h1 {
+  margin: 0;
+}
+
+.player-pool-filters {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.player-pool-filters input,
+.player-pool-filters select {
+  border: 1px solid #d6d9e0;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  background: #fff;
+}
+
+.player-pool-summary {
+  margin-bottom: 14px;
+  color: #4d5663;
+}
+
+.player-pool-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.player-pool-card {
+  background: #fff;
+  border: 1px solid #e5e7ee;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 6px 14px rgba(23, 31, 56, 0.06);
+}
+
+.player-pool-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.player-pool-card-header h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.pool-status-badge {
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.status-available {
+  color: #0f6a32;
+  background: #daf7e7;
+}
+
+.status-sold {
+  color: #8b1d1d;
+  background: #ffe3e3;
+}
+
+.status-unsold {
+  color: #684d00;
+  background: #fff1cd;
+}
+
+.player-pool-card-body p {
+  margin: 7px 0;
+  color: #2d3440;
+}
+
+.sold-meta {
+  margin-top: 10px;
+  font-weight: 600;
+  color: #8b1d1d;
+}
+
+@media (min-width: 700px) {
+  .player-pool-filters {
+    grid-template-columns: 1.4fr repeat(3, 1fr);
+  }
+
+  .player-pool-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .player-pool-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
